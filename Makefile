@@ -3,6 +3,8 @@
 # Tiny C Compiler Makefile
 #
 
+EXERUN=wasm3
+
 ifndef TOP
  TOP = .
  INCLUDED = no
@@ -238,7 +240,7 @@ endif
 
 # convert "include/tccdefs.h" to "tccdefs_.h"
 %_.h : include/%.h conftest.c
-	$S$(CC) -DC2STR $(filter %.c,$^) -o c2str.exe && ./c2str.exe $< $@
+	$S$(CC) -DC2STR $(filter %.c,$^) -o c2str.exe && $(EXERUN) ./c2str.exe $< $@
 
 # target specific object rule
 $(X)%.o : %.c $(LIBTCC_INC)

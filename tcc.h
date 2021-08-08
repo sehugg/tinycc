@@ -36,7 +36,11 @@
 #include <errno.h>
 #include <math.h>
 #include <fcntl.h>
+#ifdef __WASI__
+#include "fakesetjmp.h"
+#else
 #include <setjmp.h>
+#endif
 #include <time.h>
 
 #ifndef _WIN32
