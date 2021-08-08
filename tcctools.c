@@ -470,6 +470,10 @@ static int execvp_win32(const char *prog, char **argv)
 #define execvp execvp_win32
 #endif /* _WIN32 */
 
+#ifdef __WASI__
+#define execvp(a,b)
+#endif
+
 ST_FUNC void tcc_tool_cross(TCCState *s1, char **argv, int target)
 {
     char program[4096];

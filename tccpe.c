@@ -744,7 +744,9 @@ static int pe_write(struct pe_info *pe)
 
     fclose (pf.op);
 #ifndef _WIN32
+#ifndef __WASI__
     chmod(pe->filename, 0777);
+#endif
 #endif
 
     if (2 == pe->s1->verbose)

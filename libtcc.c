@@ -146,6 +146,13 @@ ST_FUNC void post_sem(TCCSem *p)
 {
     dispatch_semaphore_signal(p->sem);
 }
+#elif defined __WASI__
+ST_FUNC void wait_sem(TCCSem *p)
+{
+}
+ST_FUNC void post_sem(TCCSem *p)
+{
+}
 #else
 ST_FUNC void wait_sem(TCCSem *p)
 {

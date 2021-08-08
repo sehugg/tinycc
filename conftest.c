@@ -21,6 +21,7 @@ const char *platform_macros[] = {
     "__OpenBSD__",          "TARGETOS_OpenBSD",
     "__NetBSD__",           "TARGETOS_NetBSD",
     "__linux__",            "TARGETOS_Linux",
+    "__WASI__",             "TARGETOS_WASI",
     "__SIZEOF_POINTER__",   "PTR_SIZE",
     "__SIZEOF_LONG__",      "LONG_SIZE",
     0

@@ -227,6 +227,12 @@ case "$cpu" in
   riscv64)
     cpu="riscv64"
   ;;
+  wasm)
+    cpu="wasm"
+    targetos="WASI"
+    EXESUF=".wasm"
+    EXERUN="wasmer --mapdir=:.:"
+  ;;
   *)
     echo "Unsupported CPU"
     exit 1
@@ -332,7 +338,7 @@ exit 1
 fi
 
 if test -z "$cross_prefix" ; then
-  CONFTEST=./conftest$EXESUF
+  CONFTEST="$EXERUN ./conftest$EXESUF"
   if ! $cc -o $CONFTEST $source_path/conftest.c 2>/dev/null ; then
     echo "configure: error: '$cc' failed to compile conftest.c."
   else

@@ -3,7 +3,7 @@
 # Tiny C Compiler Makefile
 #
 
-EXERUN=wasm3
+#EXERUN=wasmer --mapdir=.:.
 
 ifndef TOP
  TOP = .
@@ -70,7 +70,7 @@ endif
 TCCFLAGS-unx = -B$(TOP) -I$(TOPSRC)/include -I$(TOPSRC) -I$(TOP)
 TCCFLAGS-win = -B$(TOPSRC)/win32 -I$(TOPSRC)/include -I$(TOPSRC) -I$(TOP) -L$(TOP)
 TCCFLAGS = $(TCCFLAGS$(CFG))
-TCC = $(TOP)/tcc$(EXESUF) $(TCCFLAGS)
+TCC = $(EXERUN) $(TOP)/tcc$(EXESUF) $(TCCFLAGS)
 
 CFLAGS_P = $(CFLAGS) -pg -static -DCONFIG_TCC_STATIC -DTCC_PROFILE
 LIBS_P = $(LIBS)
